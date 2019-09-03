@@ -8,17 +8,17 @@ class App extends React.Component{
   constructor(props){
     super(props)
     this.state={
-      title:"Family Tree",
+      tree:[{title:"My Family Tree",
       father:'',
       mother:'',
-      child:''
+      child:''}]
     }
   }
 
 appender=(e)=>{
       e.preventDefault();
       let d=document.createElement('div');
-      d.innerHTML=`<div class="family"><div class="row"><div class="father">${this.state.father}</div><div class="mother">${this.state.mother}</div></div><div class="row"><div class="child">${this.state.child}</div></div></div>`;
+      d.innerHTML=`<div class="family"><div class="row"><div class="father">${this.state.tree[0].father}</div><div class="mother">${this.state.tree[0].mother}</div></div><div class="row"><div class="child">${this.state.tree[0].child}</div></div></div>`;
       document.querySelector('#container').appendChild(d);
       //console.log(d);
   }
@@ -32,7 +32,7 @@ handleChange=(e)=>{
             <Parameters press={this.appender} update={this.handleChange}/>
           </div>
           <div id="right">
-            <Display test={this.state.title}/>
+            <Display test={this.state.tree[0].title}/>
           </div>
       </div>)
   }
