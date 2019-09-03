@@ -18,15 +18,15 @@ class App extends React.Component{
 
 appender=(e)=>{
       e.preventDefault();
-      console.log('hello world');
   }
-
-
+handleChange=(e)=>{
+    e.target.getAttribute('relation')==='father' ? this.setState({father:e.target.value}):e.target.getAttribute('relation')==='mother' ? this.setState({mother:e.target.value}):this.setState({child:e.target.value});
+}
   render(){
     return(
       <div>
           <div id="left">
-            <Parameters press={this.appender}/>
+            <Parameters press={this.appender} update={this.handleChange}/>
           </div>
           <div id="right">
             <Display test={this.state.title}/>
