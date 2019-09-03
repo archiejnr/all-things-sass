@@ -1,0 +1,40 @@
+$archie:rgb(44, 180, 78);
+$primary:rgb(77, 193, 236);
+
+
+@mixin borderRadius($x){
+  border-radius: $x;
+}
+@mixin display($where){
+  display:$where;
+}
+
+body{
+  background: $archie;
+}
+#parameters{
+  display:block;
+  width:25%;
+  line-height:25px;
+  font-size: 25px;
+  input{
+    width:100%;
+    text-align: center;
+    @include borderRadius(10px);
+  }
+  button{
+    background:$primary;
+    padding:2px;
+    width:100%;
+    @include display(center);
+    @include borderRadius(10px);
+  }
+}
+#right{
+  width:50%;
+  float:right;
+}
+#left{
+    width:50%;
+    float:left;
+}
