@@ -1,14 +1,32 @@
+//sass variables
+/**********************/
 $archie:rgb(44, 180, 78);
 $primary:rgb(77, 193, 236);
 
-
+//sass mixins
+/*************************/
 @mixin borderRadius($x){
   border-radius: $x;
 }
 @mixin display($where){
   display:$where;
 }
+@mixin realativeContainer($what){
+  width:50%;
+  display:$what;
+  padding:10px;
+  margin:10px;
+  font-size:19px;
+  text-transform: uppercase;
 
+}
+@mixin archie($color){
+  background: $color;
+  border-radius:5px;
+}
+
+//styling starts here
+/*************************/
 body{
   background: $archie;
 }
@@ -19,6 +37,7 @@ body{
   font-size: 25px;
   input{
     width:100%;
+    height:40px;
     text-align: center;
     @include borderRadius(10px);
   }
@@ -31,7 +50,8 @@ body{
   }
 }
 #right{
-  width:50%;
+  width:80%;
+  text-align: center;
   float:right;
 }
 #left{
@@ -46,4 +66,33 @@ body{
   font-family: cursive;
   color:#000;
   width: 100%;
+}
+#container{
+  width:100%;
+  text-align: center;
+  float:none;
+  padding-top:5%;
+  cursor:pointer;
+  .row{
+    //width:100%;
+    padding:5px;
+    text-align: center;
+    .father{
+      @include realativeContainer(inline);
+      @include archie(rgb(46, 83, 193));
+    }
+    .mother{
+      @include realativeContainer(inline);
+      @include archie(rgb(232, 104, 235));
+    }
+    .child{
+      width:100px;
+      text-align: center;
+      padding:10px;
+      margin:10px;
+      font-size:19px;
+      text-transform: uppercase;
+      @include archie(rgb(124, 193, 26));
+    }
+  }
 }
