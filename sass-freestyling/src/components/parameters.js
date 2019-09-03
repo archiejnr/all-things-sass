@@ -7,9 +7,12 @@ import '../app.scss';
 function Parameter(props){
   return(
     <div id="parameters">
-      <input type="text" />
-      <input type="text" />
-      <input type="text" />
+      <form>
+        <input type="text" placeholder="mother's name"/>
+        <input type="text" placeholder="father's name"/>
+        <input type="text" placeholder="your name"/>
+        <button>submit</button>
+      </form>
     </div>
   )
 };

@@ -14,7 +14,7 @@ body{
 }
 #parameters{
   display:block;
-  width:25%;
+  width:95%;
   line-height:25px;
   font-size: 25px;
   input{
@@ -35,6 +35,8 @@ body{
   float:right;
 }
 #left{
-    width:50%;
+    width:20%;
+    height:100vh;
     float:left;
+    background: rgb(83, 244, 181);
 }
