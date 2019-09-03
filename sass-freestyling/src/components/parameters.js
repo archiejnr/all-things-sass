@@ -11,7 +11,7 @@ function Parameter(props){
         <input type="text" placeholder="mother's name"/>
         <input type="text" placeholder="father's name"/>
         <input type="text" placeholder="your name"/>
-        <button>submit</button>
+        <button onclick={props.press}>submit</button>
       </form>
     </div>
   )

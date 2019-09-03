@@ -8,17 +8,28 @@ class App extends React.Component{
   constructor(props){
     super(props)
     this.state={
-      dako:"yes sirrr"
+      title:"Family Tree",
+      father:'',
+      mother:'',
+      child:''
     }
+    this.appender=this.appender.bind(this)
   }
+
+appender=(e)=>{
+      e.preventDefault();
+      console.log('hello world');
+  }
+
+
   render(){
     return(
       <div>
           <div id="left">
-            <Parameters />
+            <Parameters press={this.appender}/>
           </div>
           <div id="right">
-            <Display />
+            <Display test={this.state.title}/>
           </div>
       </div>)
   }
