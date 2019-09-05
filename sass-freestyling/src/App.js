@@ -38,3 +38,18 @@ handleChange=(e)=>{
   }
 }
 export default App;
+
+
+
+let myArray=[{name:'Archbold',father:'James',mother:'Cecilia'},{name:'You',father:'Archbold',mother:'Sthembile'},{name:'Sthembile',father:'grandad',mother:'grandma'}];
+
+myArray.forEach((father)=>{
+  myArray.forEach((child)=>{
+    father.name===child.father? console.log(`${child.name} are the son of ${father.name}`):console.log('hameno ikoko');
+  })
+})
+myArray.forEach((mother)=>{
+  myArray.forEach((child)=>{
+    mother.name===child.mother? console.log(`${child.name} are the son of ${mother.name}`):console.log('hameno ikoko');
+  })
+})
