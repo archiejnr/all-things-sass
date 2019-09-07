@@ -5,14 +5,13 @@ import Parameters from './components/parameters.js';
 import Display from './components/display.js';
 
 //global variable
-  let newArray;
 
 
 class App extends React.Component{
   constructor(props){
     super(props)
     this.state={
-      tree:[{name:'Anna',father:'Mdara Hwamz',mother:'Mainini',gender:'daughter'},{name:'Mainini',father:'Sekuru',mother:'Mbuya',gender:'daughter'},{name:'Mdara Hwamz',father:'kule',mother:'gogaz',gender:'son'}],
+      tree:[],
       title:'Family tree'
     }
   }
@@ -24,22 +23,22 @@ appender=(e)=>{
       document.querySelector('#container').appendChild(d);
       this.relationFinder();*/
       //console.log(d);
+      let Father=document.querySelector('.baba').getAttribute('relation')==='father'?document.querySelector('.baba').value:null;
+      let Mother=document.querySelector('.amai').getAttribute('relation')==='mother'?document.querySelector('.amai').value:null;
+      let Child=document.querySelector('.mwana').getAttribute('relation')==='child'?document.querySelector('.mwana').value:null;
 
-      console.log(newArray);
+      let newMember={
+        name:Child,
+        father:Father,
+        mother:Mother
+      }
+      this.setState({
+        tree:[...this.state.tree,...[newMember]]
+      });
   }
 
 handleChange=(e)=>{
-  let Father=e.target.getAttribute('relation')==='father'?e.target.value:null;
-  let Mother=e.target.getAttribute('relation')==='mother'?e.target.value:null;
-  let Child=e.target.getAttribute('relation')==='child'?e.target.value:null;
 
-  let newMember={
-    name:Child,
-    father:Father,
-    mother:Mother
-  }
-
-  newArray=[newMember];
 }
 //this finds the basic relationship between mother,father and daughter
 relationFinder=()=>{
@@ -69,14 +68,14 @@ relationFinder=()=>{
       console.log(Mother);
     })
   })
-  console.log(Child)
+  console.log(Child);
   console.log(`${Father} is ${Mother}'s husband`)
 }
   render(){
     return(
       <div>
           <div id="left">
-            <Parameters press={this.appender} update={this.handleChange}/>
+            <Parameters press={this.appender} update={this.handleChange} render={this.relationFinder}/>
           </div>
           <div id="right">
             <Display test={this.state.title}/>

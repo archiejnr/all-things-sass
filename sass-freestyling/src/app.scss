@@ -48,6 +48,9 @@ body{
     @include display(center);
     @include borderRadius(10px);
   }
+  .radio{
+    width:80% !important;
+  }
 }
 #right{
   width:80%;
