@@ -3,6 +3,7 @@ import './App.css';
 import './app.scss';
 import Parameters from './components/parameters.js';
 import Display from './components/display.js';
+import nextId from 'react-id-generator';
 
 //global variable
 
@@ -18,23 +19,26 @@ class App extends React.Component{
 
 appender=(e)=>{
       e.preventDefault();/*
-      let d=document.createElement('div');
-      d.innerHTML=`<div class="family"><div class="row"><div class="father">${this.state.tree[0].father}</div><div class="mother">${this.state.tree[0].mother}</div></div><div class="row"><div class="child">${this.state.tree[0].child}</div></div></div>`;
-      document.querySelector('#container').appendChild(d);
+
       this.relationFinder();*/
       //console.log(d);
       let Father=document.querySelector('.baba').getAttribute('relation')==='father'?document.querySelector('.baba').value:null;
       let Mother=document.querySelector('.amai').getAttribute('relation')==='mother'?document.querySelector('.amai').value:null;
       let Child=document.querySelector('.mwana').getAttribute('relation')==='child'?document.querySelector('.mwana').value:null;
-
+      let id=nextId();
       let newMember={
         name:Child,
         father:Father,
-        mother:Mother
+        mother:Mother,
+        id:id
       }
       this.setState({
         tree:[...this.state.tree,...[newMember]]
       });
+
+    document.querySelector('.baba').innerHTML=null;
+    document.querySelector('.amai').innerHTML=null;
+    document.querySelector('.mwana').innerHTML=null;
   }
 
 handleChange=(e)=>{
@@ -68,8 +72,11 @@ relationFinder=()=>{
       console.log(Mother);
     })
   })
-  console.log(Child);
-  console.log(`${Father} is ${Mother}'s husband`)
+
+  /*we are going to render the code to the screen from here*/
+  let d=document.createElement('div');
+  d.innerHTML=`<div class="family"><div class="row"><div class="father">${Father}</div><div class="mother">${Mother}</div></div><div class="row"><div class="child">${Child}</div></div></div>`;
+  document.querySelector('#container').appendChild(d);
 }
   render(){
     return(

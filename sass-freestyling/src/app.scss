@@ -49,7 +49,12 @@ body{
     @include borderRadius(10px);
   }
   .radio{
-    width:80% !important;
+    width:10% !important;
+  
+  }
+  .radioButtons{
+    text-align: center;
+    font-size:16px;
   }
 }
 #right{
