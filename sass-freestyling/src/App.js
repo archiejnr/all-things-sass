@@ -12,7 +12,7 @@ class App extends React.Component{
   constructor(props){
     super(props)
     this.state={
-      tree:[],
+      tree:[{name:'archbold',father:'hama',mother:'Sithe'},{name:'hama',father:'james',mother:'cecilia'}],
       title:'Family tree'
     }
   }
@@ -54,7 +54,6 @@ relationFinder=()=>{
     this.state.tree.forEach((child)=>{
       if (father.name===child.father)
       {
-        console.log(`${child.name} is the ${child.gender} of ${father.name}`);
         Father=father.name;
         Child=child.name;
       }else {
@@ -65,18 +64,21 @@ relationFinder=()=>{
   this.state.tree.forEach((mother)=>{
     this.state.tree.forEach((child)=>{
       if (mother.name===child.mother){
-        console.log(`${child.name} is the ${child.gender} of ${mother.name}`);
         Mother=mother.name;
         Child=child.name;
       }else
       console.log(Mother);
     })
+    console.log(`${Child} is the descendant of ${Father} and ${Mother}`);
   })
 
   /*we are going to render the code to the screen from here*/
-  let d=document.createElement('div');
-  d.innerHTML=`<div class="family"><div class="row"><div class="father">${Father}</div><div class="mother">${Mother}</div></div><div class="row"><div class="child">${Child}</div></div></div>`;
-  document.querySelector('#container').appendChild(d);
+  for(let x=0;x<this.state.tree.length;x++){
+    let d=document.createElement('div');
+    d.innerHTML=`<div class="family"><div class="row"><div class="father">${this.state.tree[x].father}</div><div class="mother">${this.state.tree[x].mother}</div></div><div class="row"><div class="child">${this.state.tree[x].name}</div></div></div>`;
+    document.querySelector('#container').appendChild(d);
+  }
+
 }
   render(){
     return(
