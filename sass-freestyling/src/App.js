@@ -75,11 +75,28 @@ relationFinder=()=>{
   /*we are going to render the code to the screen from here*/
   for(let x=0;x<this.state.tree.length;x++){
     let d=document.createElement('div');
-    d.innerHTML=`<div class="family"><div class="row"><div class="father">${this.state.tree[x].father}</div><div class="mother">${this.state.tree[x].mother}</div></div><div class="row"><div class="child">${this.state.tree[x].name}</div></div></div>`;
+    d.innerHTML=`<div class="family">
+                        <div class="row">
+                          <div class="father">
+                            ${this.state.tree[x].father}
+                          </div>
+                          <div class="mother">
+                              ${this.state.tree[x].mother}
+                          </div>
+                        </div>
+                        <div class="vl"></div>
+                        <div class="row">
+                            <div class="child">
+                              ${this.state.tree[x].name}
+                            </div>
+                          </div>
+                          <hr/>
+                        </div>`;
     document.querySelector('#container').appendChild(d);
   }
 
 }
+
   render(){
     return(
       <div>

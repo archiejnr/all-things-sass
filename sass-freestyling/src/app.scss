@@ -50,7 +50,7 @@ body{
   }
   .radio{
     width:10% !important;
-  
+
   }
   .radioButtons{
     text-align: center;
@@ -102,5 +102,11 @@ body{
       text-transform: uppercase;
       @include archie(rgb(124, 193, 26));
     }
+  }
+  .vl{
+    height:20px;
+    border-left:6px solid red;
+    position:relative;
+    left:500px;
   }
 }
