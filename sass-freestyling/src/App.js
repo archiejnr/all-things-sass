@@ -12,7 +12,7 @@ class App extends React.Component{
   constructor(props){
     super(props)
     this.state={
-      tree:[{name:'archbold',father:'hama',mother:'Sithe'},{name:'hama',father:'james',mother:'cecilia'}],
+      tree:[{name:'archbold',father:'hama',mother:'Sithe',id:1},{name:'hama',father:'james',mother:'cecilia',id:2}],
       title:'Family tree'
     }
   }
@@ -46,9 +46,9 @@ handleChange=(e)=>{
 }
 //this finds the basic relationship between mother,father and daughter
 relationFinder=()=>{
-  let Child=null;
-  let Father=null;
-  let Mother=null;
+  let Child;
+  let Father;
+  let Mother;
 
   this.state.tree.forEach((father)=>{
     this.state.tree.forEach((child)=>{
@@ -69,34 +69,47 @@ relationFinder=()=>{
       }else
       console.log(Mother);
     })
-    console.log(`${Child} is the descendant of ${Father} and ${Mother}`);
   })
-
+  console.log(`${Child} is the descendant of ${Father} and ${Mother}`);
   /*we are going to render the code to the screen from here*/
-  for(let x=0;x<this.state.tree.length;x++){
-    let d=document.createElement('div');
-    d.innerHTML=`<div class="family">
-                        <div class="row">
-                          <div class="father">
-                            ${this.state.tree[x].father}
-                          </div>
-                          <div class="mother">
-                              ${this.state.tree[x].mother}
+  /**/
+  for(let x=0;x<this.state.tree.length-1;x++){
+    let fatherObject;
+    let childObject;
+    if(Father){
+       fatherObject=this.state.tree.filter((x)=>{return x.name===Father})[0];
+       let div=document.createElement('div');
+       div.innerHTML=Father;
+       document.querySelector('#container').append(div);
+       if(Child){
+         childObject=this.state.tree.filter((x)=>{return x.name===Child})[0];
+         document.querySelector('#container').firstChild.classList.add('bambo');
+         document.querySelector('.bambo').append(document.createElement('div').innerHTML=Child);
+       }
+    }
+  }
+}
+/*componentDidMount(){
+  let d=document.createElement('div');
+  d.innerHTML=`<div class="family">
+                      <div class="row">
+                        <div class="father">
+                          ${this.state.tree[0].father}
+                        </div>
+                        <div class="mother">
+                            ${this.state.tree[0].mother}
+                        </div>
+                      </div>
+                      <div class="vl"></div>
+                      <div class="row">
+                          <div class="child">
+                            ${this.state.tree[0].name}
                           </div>
                         </div>
-                        <div class="vl"></div>
-                        <div class="row">
-                            <div class="child">
-                              ${this.state.tree[x].name}
-                            </div>
-                          </div>
-                          <hr/>
-                        </div>`;
-    document.querySelector('#container').appendChild(d);
-  }
-
-}
-
+                        <hr/>
+                      </div>`;
+  document.querySelector('#container').appendChild(d);
+}*/
   render(){
     return(
       <div>
@@ -105,6 +118,9 @@ relationFinder=()=>{
           </div>
           <div id="right">
             <Display test={this.state.title}/>
+          </div>
+          <div id="bottom">
+
           </div>
       </div>)
   }
