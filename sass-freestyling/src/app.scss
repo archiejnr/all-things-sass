@@ -29,6 +29,7 @@ $primary:rgb(77, 193, 236);
 /*************************/
 body{
   background: $archie;
+  height:100vh;
 }
 #parameters{
   display:block;
@@ -76,11 +77,12 @@ body{
   width: 100%;
 }
 #container{
-  width:100%;
+  width:100vh;
   text-align: center;
   float:none;
   padding-top:5%;
   cursor:pointer;
+  overflow-y: hidden;
   .row{
     //width:100%;
     padding:5px;
