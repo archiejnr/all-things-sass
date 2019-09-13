@@ -84,7 +84,9 @@ relationFinder=()=>{
        if(Child){
          childObject=this.state.tree.filter((x)=>{return x.name===Child})[0];
          document.querySelector('#container').firstChild.classList.add('bambo');
-         document.querySelector('.bambo').append(document.createElement('div').innerHTML=Child);
+         let node=document.createElement('div');
+         node.innerHTML=Child;
+         document.querySelector('.bambo').append(node);
        }
     }
   }
