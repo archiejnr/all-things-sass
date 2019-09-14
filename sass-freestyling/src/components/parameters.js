@@ -8,9 +8,9 @@ function Parameter(props){
   return(
     <div id="parameters">
       <form>
-        <input className="amai" type="text" placeholder="mother's name" relation="mother" onChange={props.update} required />
-        <input className="baba" type="text" placeholder="father's name" relation="father" onChange={props.update} required />
-        <input className="mwana" type="text" placeholder="your name" relation="child" onChange={props.update} required />
+        <input className="amai input" type="text" placeholder="mother's name" relation="mother" onChange={props.update} required />
+        <input className="baba input" type="text" placeholder="father's name" relation="father" onChange={props.update} required />
+        <input className="mwana input" type="text" placeholder="your name" relation="child" onChange={props.update} required />
         <div className="radioButtons">
          <label htmlFor="male">male</label>
          <input className="radio" type="radio" name="gender" value="son" id="male"/>

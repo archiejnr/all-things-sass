@@ -39,7 +39,16 @@ appender=(e)=>{
     document.querySelector('.baba').innerHTML=null;
     document.querySelector('.amai').innerHTML=null;
     document.querySelector('.mwana').innerHTML=null;
+
+    this.clearFields();
   }
+clearFields=()=>{
+        let node=document.querySelectorAll('.input');
+        let arr=Array.prototype.slice.call(node);
+        arr.forEach((element)=>{
+        	element.value=null;
+        });
+}
 
 handleChange=(e)=>{
 
@@ -73,7 +82,6 @@ relationFinder=()=>{
   console.log(`${Child} is the descendant of ${Father} and ${Mother}`);
   /*we are going to render the code to the screen from here*/
   /**/
-  for(let x=0;x<this.state.tree.length-1;x++){
     let fatherObject;
     let childObject;
     if(Father){
@@ -89,7 +97,6 @@ relationFinder=()=>{
          document.querySelector('.bambo').append(node);
        }
     }
-  }
 }
 /*componentDidMount(){
   let d=document.createElement('div');
